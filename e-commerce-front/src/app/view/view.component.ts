@@ -9,7 +9,8 @@ import { ApiService } from '../service/api.service';
 })
 export class ViewComponent implements OnInit{
 
-  singleproduct:any={}
+  singleproduct:any={};
+  quantity: number = 1;
 
   constructor(private activated:ActivatedRoute, private api:ApiService){}
 
@@ -40,6 +41,20 @@ export class ViewComponent implements OnInit{
         
       }
     })
+  }
+
+  addToCart(product: any, quantity: number) {
+    // Call your API to add the product to the cart
+    this.api.addToCart(product, quantity).subscribe({
+      next: (res: any) => {
+        // Handle success response
+        console.log('Product added to cart:', res);
+      },
+      error: (err: any) => {
+        // Handle error response
+        console.error('Error adding product to cart:', err);
+      }
+    });
   }
 
 }

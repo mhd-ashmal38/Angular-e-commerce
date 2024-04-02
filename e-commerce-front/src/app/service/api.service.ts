@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ApiService {
+  
 
   SERVER_URL='http://localhost:3000'
 
@@ -29,5 +30,20 @@ export class ApiService {
   // api for login
   loginApi=(user:any)=>{
     return this.http.post(`${this.SERVER_URL}/user/login`,user)
+  }
+  
+  // API call to add product to cart
+  addToCart(product: any, quantity: number) {
+    return this.http.post(`${this.SERVER_URL}/cart/add`, { productId: product._id, quantity: quantity, rate: product.price, image: product.image });
+  }
+
+  // api call to get all cart items
+  getAllCarts=()=>{
+    return this.http.get(`${this.SERVER_URL}/cart/all`)
+  }
+
+  // Delete cart item by ID
+  deleteCartItems(id:any){
+    return this.http.delete(`${this.SERVER_URL}/cart/delete/${id}`)
   }
 }
