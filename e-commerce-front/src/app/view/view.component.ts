@@ -7,42 +7,43 @@ import { ApiService } from '../service/api.service';
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.css']
 })
-export class ViewComponent implements OnInit{
+export class ViewComponent implements OnInit {
 
-  singleproduct:any={};
+  singleproduct: any = {};
   quantity: number = 1;
 
-  constructor(private activated:ActivatedRoute, private api:ApiService){}
+  constructor(private activated: ActivatedRoute, private api: ApiService) { }
 
   ngOnInit(): void {
 
-    this.activated.params.subscribe((data:any)=>{
+    this.activated.params.subscribe((data: any) => {
       console.log(data);
-      const{id}=data
+      const { id } = data
       console.log(id);
-      
+
 
       this.getProduct(id)
-      
+
     })
 
 
   }
 
-  getProduct=(id:any)=>{
+  getProduct = (id: any) => {
     this.api.viewAproduct(id).subscribe({
-      next:(res:any)=>{
+      next: (res: any) => {
         console.log(res);
-        this.singleproduct=res
-        
+        this.singleproduct = res
+
       },
-      error:(err:any)=>{
+      error: (err: any) => {
         console.log(err);
-        
+
       }
     })
   }
 
+  // add to cart
   addToCart(product: any, quantity: number) {
     // Call your API to add the product to the cart
     this.api.addToCart(product, quantity).subscribe({
@@ -56,5 +57,24 @@ export class ViewComponent implements OnInit{
       }
     });
   }
+
+  // add to wishlist
+  addToWishlist(product: any) {
+    const { _id, title, price, image, description } = product; // Assuming _id is the productId
+    const wishlistItem = { productId: _id, title, price, image, description };
+
+    this.api.addToWishlist(wishlistItem).subscribe({
+      next: (res: any) => {
+        console.log('Product added to wishlist:', res);
+        // Optionally, you can notify the user or update the UI
+      },
+      error: (err: any) => {
+        console.error('Error adding product to wishlist:', err);
+        // Handle error response
+      }
+    });
+  }
+
+
 
 }

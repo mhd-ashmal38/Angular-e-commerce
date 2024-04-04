@@ -37,7 +37,7 @@ export class LoginComponent {
       this.api.loginApi(reqBody).subscribe({
         next:(res:any)=>{
           console.log(res);
-          this.route.navigateByUrl('')
+          this.route.navigateByUrl('/admin')
           
         },
         error:(err:any)=>{

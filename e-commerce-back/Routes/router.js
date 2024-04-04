@@ -6,6 +6,8 @@ const userController=require('../controllers/userController')
 
 const cartController=require('../controllers/cartController')
 
+const wishlistController=require('../controllers/wishlistController')
+
 const router=new express.Router()
 
 // product
@@ -27,5 +29,12 @@ router.post('/user/register',userController.registerController)
 // login using post
 
 router.post('/user/login',userController.loginController)
+
+// wishlist
+router.post('/wishlist/add', wishlistController.addToWishlist);
+
+router.get('/wishlist/all',wishlistController.getAllWishlist)
+
+router.delete('/wishlist/delete/:id',wishlistController.deleteWishlistItem)
 
 module.exports=router
