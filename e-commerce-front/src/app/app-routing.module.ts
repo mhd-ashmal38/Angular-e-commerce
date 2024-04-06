@@ -6,9 +6,10 @@ import { RegisterComponent } from './register/register.component';
 import { ViewComponent } from './view/view.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { CartComponent } from './cart/cart.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  {path:"",component:AllProductsComponent},
+  {path:"",component:HomeComponent},
   {path:"admin/login",component:LoginComponent},
   {path:"user/register",component:RegisterComponent},
   {path:"product/view/:id",component:ViewComponent},

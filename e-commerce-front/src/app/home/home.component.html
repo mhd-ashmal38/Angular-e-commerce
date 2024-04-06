@@ -1,0 +1,69 @@
+<!-- header -->
+<app-header></app-header>
+
+<div style="position: relative;">
+    <img src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/if_w_gt_1920,w_1920/xcat_ss24_springshoot_mw_onmodel_hp_large_mh_d_09026db15c.jpg"
+        alt="" style="width: 100%; height: auto;">
+    <div style="top: 60%; " class="sm:absolute text-black ps-10">
+        <h1 class="text-4xl font-extrabold">SPRING BREAK MENTALITY</h1>
+        <p class="text-xl pt-5">Get instant spring vibes with fresh <br>sneakers, easy layers, and more essentials.</p>
+        <button routerLink="/mens" type="button"
+            class="my-5 inline-flex items-center text-white bg-black border  focus:outline-none hover:text-gray-500 focus:ring-4 focus:ring-gray-200 font-medium  text-sm px-4 py-2 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">SHOP
+            MEN
+            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M1 5h12m0 0L9 1m4 4L9 9" />
+            </svg>
+        </button>
+        <button routerLink="/womens" type="button"
+            class="my-5 inline-flex items-center text-white bg-black border  focus:outline-none hover:text-gray-500 focus:ring-4 focus:ring-gray-200 font-medium  text-sm px-4 py-2 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">SHOP
+            WOMEN
+            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M1 5h12m0 0L9 1m4 4L9 9" />
+            </svg>
+        </button>
+    </div>
+</div>
+
+
+<!-- new arrivals -->
+<section>
+    <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+        <header>
+            <h2 class="text-xl font-bold text-gray-900 sm:text-3xl">Product Collection</h2>
+
+            <p class="mt-4 max-w-md text-gray-500">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque praesentium cumque iure
+                dicta incidunt est ipsam, officia dolor fugit natus?
+            </p>
+        </header>
+
+        <ul class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <li *ngFor="let product of newArrivals.slice(-4)">
+                <a routerLink="product/view/{{product.id}}" class="group block overflow-hidden">
+                    <div class="image-container">
+                        <img [src]="product.img1" alt=""
+                            class="w-full h-full object-cover transition duration-500 group-hover:scale-105" />
+                    </div>
+
+                    <div class="relative bg-white pt-3">
+                        <h3 class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
+                            {{product.name}}
+                        </h3>
+                        <p class="mt-2">
+                            <span class="sr-only">Regular Price</span>
+                            <span class="tracking-wider text-gray-900">${{product.price}}</span>
+                        </p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</section>
+
+
+<!-- footer -->
+<app-footer></app-footer>

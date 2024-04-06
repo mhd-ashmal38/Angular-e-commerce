@@ -8,26 +8,26 @@ import { ApiService } from '../service/api.service';
 })
 export class AllProductsComponent implements OnInit {
 
-  allProducts:any=[]
+  // allProducts:any=[]
 
   constructor(private api:ApiService){}
   ngOnInit(): void {
-    this.getAllProductapi()
+    // this.getAllProductapi()
   }
 
-  getAllProductapi=()=>{
-    this.api.getAllProducts().subscribe({
-      next:(res:any)=>{
-        console.log(res);
-        this.allProducts=res
+  // getAllProductapi=()=>{
+  //   this.api.getAllProducts().subscribe({
+  //     next:(res:any)=>{
+  //       console.log(res);
+  //       this.allProducts=res
         
-      },
-      error:(err:any)=>{
-        console.log(err);
+  //     },
+  //     error:(err:any)=>{
+  //       console.log(err);
         
-      }
-    })
-  }
+  //     }
+  //   })
+  // }
 
 
 

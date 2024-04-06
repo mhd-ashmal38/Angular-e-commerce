@@ -11,20 +11,24 @@ const wishlistController=require('../controllers/wishlistController')
 const router=new express.Router()
 
 // product
-router.get('/products/all',productController.getAllProductcontrollers)
+router.post('/products/add', productController.addProduct);
+
+router.get('/products/all',productController.getAllProductcontrollers);
+
+router.delete('/products/delete/:id',productController.deleteProduct);
 
 router.get('/product/view/:id',productController.getAproduct)
 
-// cart
+// // cart
 router.post('/cart/add', cartController.addToCart);
 
 router.get('/cart/all',cartController.getAllCart)
 
 router.delete('/cart/delete/:id',cartController.deleteCartItem)
 
-// register
+// // register
 
-router.post('/user/register',userController.registerController)
+// router.post('/user/register',userController.registerController)
 
 // login using post
 

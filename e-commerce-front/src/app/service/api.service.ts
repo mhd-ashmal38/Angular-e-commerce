@@ -11,10 +11,19 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  // API call to add a new product
+  addProduct(productData: any) {
+    return this.http.post(`${this.SERVER_URL}/products/add`, productData);
+  }
 
   // api call to get all products from database
   getAllProducts = () => {
     return this.http.get(`${this.SERVER_URL}/products/all`)
+  }
+
+  // delete product by id
+  deleteProduct=(id:any)=>{
+    return this.http.delete(`${this.SERVER_URL}/products/delete/${id}`)
   }
 
   // api call to get a single product
@@ -22,10 +31,10 @@ export class ApiService {
     return this.http.get(`${this.SERVER_URL}/product/view/${id}`)
   }
 
-  // api call for register
-  registerApi = (user: any) => {
-    return this.http.post(`${this.SERVER_URL}/user/register`, user)
-  }
+  // // api call for register
+  // registerApi = (user: any) => {
+  //   return this.http.post(`${this.SERVER_URL}/user/register`, user)
+  // }
 
   // api for login
   loginApi = (user: any) => {
@@ -34,7 +43,12 @@ export class ApiService {
 
   // API call to add product to cart
   addToCart(product: any, quantity: number) {
-    return this.http.post(`${this.SERVER_URL}/cart/add`, { productId: product._id, quantity: quantity, rate: product.price, image: product.image });
+    return this.http.post(`${this.SERVER_URL}/cart/add`, { productId: product._id,
+      name: product.name,
+      price: product.price,
+      stock: product.stock,
+      quantity: quantity, 
+      image: product.img1  });
   }
 
   // api call to get all cart items
@@ -53,12 +67,12 @@ export class ApiService {
   }
 
   // get all wishlist items
-  getAllWishlist=()=>{
+  getAllWishlist = () => {
     return this.http.get(`${this.SERVER_URL}/wishlist/all`)
   }
 
   // delete wishlist item by Id
-  deleteWishlistItems(id:any){
+  deleteWishlistItems(id: any) {
     return this.http.delete(`${this.SERVER_URL}/wishlist/delete/${id}`)
   }
 

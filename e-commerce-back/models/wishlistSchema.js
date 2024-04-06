@@ -7,19 +7,19 @@ const wishlistSchema = new mongoose.Schema({
         required: true,
         ref: 'Product' // Assuming 'Product' is the name of your product model
     },
-    title: {
+    name: {
         type: String,
         required: true
     },
-    price: {
-        type: Number,
-        required: true
+    price:{
+        type:Number,
+        required:true
     },
-    image: {
-        type: String,
-        required: true
+    stock:{
+        type:String,
+        required:true
     },
-    description: {
+    img1: {
         type: String,
         required: true
     }

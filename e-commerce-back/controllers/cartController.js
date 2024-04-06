@@ -3,14 +3,16 @@ const carts = require('../models/cartSchema');
 exports.addToCart = async (req, res) => {
     try {
         // Extract product details from request body
-        const { productId, quantity, rate, image } = req.body;
+        const { productId,name,price,stock, quantity,image} = req.body;
 
         // Create a new cart item
         const cartItem = new carts({
             productId: productId,
+            name:name,
+            price:price,
+            stock:stock,
             quantity: quantity,
-            rate: rate,
-            image: image
+            image:image
         });
 
         // Save the cart item to the database

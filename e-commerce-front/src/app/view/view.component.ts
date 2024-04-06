@@ -17,14 +17,13 @@ export class ViewComponent implements OnInit {
   ngOnInit(): void {
 
     this.activated.params.subscribe((data: any) => {
-      console.log(data);
+      // console.log(data);
       const { id } = data
-      console.log(id);
-
-
+      // console.log(id);
       this.getProduct(id)
-
     })
+
+    this.singleproduct.mainImage = this.singleproduct.img1;
 
 
   }
@@ -32,8 +31,9 @@ export class ViewComponent implements OnInit {
   getProduct = (id: any) => {
     this.api.viewAproduct(id).subscribe({
       next: (res: any) => {
-        console.log(res);
+        // console.log(res);
         this.singleproduct = res
+        this.singleproduct.mainImage = this.singleproduct.img1;
 
       },
       error: (err: any) => {
@@ -41,6 +41,10 @@ export class ViewComponent implements OnInit {
 
       }
     })
+  }
+
+  updateMainImage(image: string): void {
+    this.singleproduct.mainImage = image;
   }
 
   // add to cart
@@ -60,8 +64,8 @@ export class ViewComponent implements OnInit {
 
   // add to wishlist
   addToWishlist(product: any) {
-    const { _id, title, price, image, description } = product; // Assuming _id is the productId
-    const wishlistItem = { productId: _id, title, price, image, description };
+    const { _id, name, price,stock, img1 } = product; // Assuming _id is the productId
+    const wishlistItem = { productId: _id, name, price,stock, img1 };
 
     this.api.addToWishlist(wishlistItem).subscribe({
       next: (res: any) => {

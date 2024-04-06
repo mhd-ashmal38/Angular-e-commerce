@@ -21,6 +21,8 @@ export class CartComponent {
   getCartItems=()=>{
     this.api.getAllCarts().subscribe((data:any)=>{
       this.cartItems=data
+      console.log(this.cartItems);
+      
       this.calculateSubtotal()
     })
   }
@@ -40,16 +42,16 @@ export class CartComponent {
   }
 
   // Calculate subtotal
-  calculateSubtotal(): void {
-    this.subtotal = this.cartItems.reduce((acc: number, item: any) => {
-      return acc + (item.rate * item.quantity);
-    }, 0);
-  }
+calculateSubtotal(): void {
+  this.subtotal = this.cartItems.reduce((acc: number, item: any) => {
+    return acc + (item.price * item.quantity);
+  }, 0);
+}
 
-  // Calculate total
-  calculateTotal(): number {
-    return this.subtotal + this.shippingCost;
-  }
+// Calculate total
+calculateTotal(): number {
+  return this.subtotal + this.shippingCost;
+}
 
   // delete cart item
   deleteCartItem(id:any){

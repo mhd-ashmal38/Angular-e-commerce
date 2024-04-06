@@ -1,3 +1,4 @@
+const { type } = require('express/lib/response')
 const mongoose=require('mongoose')
 
 const productSchema=new mongoose.Schema({
@@ -6,7 +7,7 @@ const productSchema=new mongoose.Schema({
         required:true,
         unique:true
     },
-    title:{
+    name:{
         type:String,
         required:true
     },
@@ -14,27 +15,37 @@ const productSchema=new mongoose.Schema({
         type:Number,
         required:true
     },
-    description:{
-        type:String,
-        required:true
-    },
     category:{
         type:String,
         required:true
     },
-    image:{
+    type:{
         type:String,
         required:true
     },
-    rating:{
-        rate:{
-            type:Number,
-            required:true
-        },
-        count:{
-            type:Number,
-            required:true
-        }
+    stock:{
+        type:String,
+        required:true
+    },
+    img1:{
+        type:String,
+        required:true
+    },
+    img2:{
+        type:String,
+        required:true
+    },
+    img3:{
+        type:String,
+        required:true
+    },
+    img4:{
+        type:String,
+        required:true
+    },
+    description:{
+        type:String,
+        required:true
     }
 })
 

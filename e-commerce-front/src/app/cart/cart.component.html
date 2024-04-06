@@ -1,4 +1,3 @@
-<!-- navbar -->
 <app-header></app-header>
 
 <div class="p-2 mb-10 md:p-6">
@@ -33,8 +32,7 @@
                             <img [src]="cartItem.image" alt="product-image" class="product-image rounded-lg sm:w-40" />
                         </div>
                         <div class="mt-4 sm:mt-0">
-                            <h2 class="text-lg font-bold text-gray-900">{{ cartItem.title }}</h2>
-                            <p class="mt-1 text-xs text-gray-700">36EU - 4US</p>
+                            <h2 class="text-lg font-bold text-gray-900">{{ cartItem.name }}</h2>
                         </div>
                         <div class="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
                                 <div class="flex items-center border-gray-100">
@@ -54,7 +52,7 @@
                                 </div>
                                 <div class="flex items-center space-x-4">
                                     <!-- Display total price -->
-                                    <p class="text-sm">{{ cartItem.rate * cartItem.quantity }}₭</p>
+                                    <p class="text-sm">${{ cartItem.price * cartItem.quantity }}</p>
                                     <!-- Remove item button -->
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="currentColor"
@@ -73,17 +71,17 @@
                     <div class="mt-6 rounded-lg border bg-white p-6 shadow-md">
                         <div class="mb-2 flex justify-between">
                             <p class="text-gray-700">Subtotal</p>
-                            <p class="text-gray-700">{{ subtotal }}</p>
+                            <p class="text-gray-700">${{ subtotal }}</p>
                         </div>
                         <div class="flex justify-between">
                             <p class="text-gray-700">Shipping</p>
-                            <p class="text-gray-700">{{ shippingCost }}</p>
+                            <p class="text-gray-700">${{ shippingCost }}</p>
                         </div>
                         <hr class="my-4" />
                         <div class="flex justify-between">
                             <p class="text-lg font-bold">Total</p>
                             <div class="">
-                                <p class="mb-1 text-lg font-bold">{{ calculateTotal() }}</p>
+                                <p class="mb-1 text-lg font-bold">${{ calculateTotal() }}</p>
                                 <p class="text-sm text-gray-700">including VAT</p>
                             </div>
                         </div>
