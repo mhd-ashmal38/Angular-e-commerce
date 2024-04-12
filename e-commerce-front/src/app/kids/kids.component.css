@@ -1,0 +1,18 @@
+/* Add this CSS to your global styles or component styles */
+.image-container {
+    height: 350px;
+    /* Set the fixed height for the image container */
+    max-height: 100%;
+    /* Ensure images don't become too large */
+    overflow: hidden;
+    /* Hide any overflow */
+}
+
+.image-container img {
+    width: 100%;
+    /* Ensure the image fills its container horizontally */
+    height: 100%;
+    /* Ensure the image fills its container vertically */
+    object-fit: cover;
+    /* Scale the image while maintaining aspect ratio */
+}

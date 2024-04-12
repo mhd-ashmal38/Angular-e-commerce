@@ -7,6 +7,9 @@ import { ViewComponent } from './view/view.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { CartComponent } from './cart/cart.component';
 import { HomeComponent } from './home/home.component';
+import { MensComponent } from './mens/mens.component';
+import { WomensComponent } from './womens/womens.component';
+import { KidsComponent } from './kids/kids.component';
 
 const routes: Routes = [
   {path:"",component:HomeComponent},
@@ -15,6 +18,9 @@ const routes: Routes = [
   {path:"product/view/:id",component:ViewComponent},
   {path:"wishlist",component:WishlistComponent},
   {path:"cart",component:CartComponent},
+  {path:"mens",component:MensComponent},
+  {path:"womens",component:WomensComponent},
+  {path:"kids",component:KidsComponent},
   { path: 'admin', loadChildren: () => import('./module/admin/admin.module').then(m => m.AdminModule) }
 ];
 

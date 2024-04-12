@@ -66,28 +66,28 @@ exports.deleteProduct = async (req, res) => {
     }
 }
 
-// // update product details
-// exports.updateProduct=async(req,res)=>{
-//     try{
-//         const productId=req.params.id;
-//         const { name, price, category, type, stock, img1, img2, img3, img4, description } = req.body;
+// update product details
+exports.updateProduct=async(req,res)=>{
+    try{
+        const productId=req.params.id;
+        const { name, price, category, type, stock, img1, img2, img3, img4, description } = req.body;
 
-//         const updateProduct=await products.findByIdAndUpdate(productId,{
-//             name,
-//             price,
-//             category,
-//             type,
-//             stock,
-//             img1,
-//             img2,
-//             img3,
-//             img4,
-//             description
-//         },{new:true})
+        const updateProduct=await products.findByIdAndUpdate(productId,{
+            name,
+            price,
+            category,
+            type,
+            stock,
+            img1,
+            img2,
+            img3,
+            img4,
+            description
+        },{new:true})
 
-//         await updateProduct.save()
-//         res.status(200).json(updateProduct)
-//     }catch(error){
-//         res.status(500).json(error)
-//     }
-// }
+        await updateProduct.save()
+        res.status(200).json(updateProduct)
+    }catch(error){
+        res.status(500).json(error)
+    }
+}

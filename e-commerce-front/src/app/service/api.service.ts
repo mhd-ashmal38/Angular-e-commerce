@@ -31,6 +31,11 @@ export class ApiService {
     return this.http.get(`${this.SERVER_URL}/product/view/${id}`)
   }
 
+  // edit product
+  editProduct=(id:any,data:any)=>{
+    return this.http.put(`${this.SERVER_URL}/product/edit/${id}`,data)
+  }
+
   // // api call for register
   // registerApi = (user: any) => {
   //   return this.http.post(`${this.SERVER_URL}/user/register`, user)
