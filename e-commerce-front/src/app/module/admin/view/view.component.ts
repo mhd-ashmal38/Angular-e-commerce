@@ -21,7 +21,7 @@ export class ViewComponent implements OnInit {
       next:(res:any)=>{
         // console.log(res);
         this.allProducts=res
-        console.log(this.allProducts);
+        // console.log(this.allProducts);
         
         
       },

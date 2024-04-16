@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router'; 
 import { ApiService } from 'src/app/service/api.service';
 
 @Component({
@@ -7,37 +7,30 @@ import { ApiService } from 'src/app/service/api.service';
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.css']
 })
-export class EditComponent implements OnInit  {
+export class EditComponent implements OnInit {
+  productId: any;
+  product: any = {};
+  errorMessage: string = '';
 
-  user:any={}
-
-  constructor(private route:ActivatedRoute,private api:ApiService){}
+  constructor(private route: ActivatedRoute, private api: ApiService) { }
 
   ngOnInit(): void {
-    
+    this.route.paramMap.subscribe(params => {
+      this.productId = params.get('id'); 
+      console.log(this.productId);
+      
+      this.fetchProductDetails();
+    });
   }
 
-  existingProduct(id:any){
-    this.route.params.subscribe((res:any)=>{
-      console.log(res);
-      
-      const {id}=res
-      console.log(id);
-
-      this.api.viewAproduct(id).subscribe({
-        next:(res:any)=>{
-          console.log(res);
-          this.user=res
-          
-        },
-        error:(err:any)=>{
-          console.log(err);
-          
-        }
-      })
-      
-      
-    })
+  fetchProductDetails(): void {
+    this.api.viewAproduct(this.productId).subscribe({
+      next: (res: any) => {
+        this.product = res;
+      },
+      error: (err: any) => {
+        this.errorMessage = err.message;
+      }
+    });
   }
-
 }

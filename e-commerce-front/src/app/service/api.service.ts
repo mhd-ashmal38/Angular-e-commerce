@@ -28,12 +28,7 @@ export class ApiService {
 
   // api call to get a single product
   viewAproduct = (id: any) => {
-    return this.http.get(`${this.SERVER_URL}/product/view/${id}`)
-  }
-
-  // edit product
-  editProduct=(id:any,data:any)=>{
-    return this.http.put(`${this.SERVER_URL}/product/edit/${id}`,data)
+    return this.http.get(`${this.SERVER_URL}/products/view/${id}`)
   }
 
   // // api call for register

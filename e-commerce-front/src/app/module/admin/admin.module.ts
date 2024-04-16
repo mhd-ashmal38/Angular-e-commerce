@@ -8,6 +8,7 @@ import { AddComponent } from './add/add.component';
 import { ViewComponent } from './view/view.component';
 import { EditComponent } from './edit/edit.component';
 import { FormsModule } from '@angular/forms';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     AddComponent,
     ViewComponent,
-    EditComponent
+    EditComponent,
+    SidebarComponent
   ],
   imports: [
     CommonModule,
