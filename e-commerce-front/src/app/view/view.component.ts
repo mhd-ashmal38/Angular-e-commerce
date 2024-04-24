@@ -54,6 +54,7 @@ export class ViewComponent implements OnInit {
       next: (res: any) => {
         // Handle success response
         console.log('Product added to cart:', res);
+        alert('Added to cart')
       },
       error: (err: any) => {
         // Handle error response
@@ -70,6 +71,7 @@ export class ViewComponent implements OnInit {
     this.api.addToWishlist(wishlistItem).subscribe({
       next: (res: any) => {
         console.log('Product added to wishlist:', res);
+        alert('Added to Wishlist')
         // Optionally, you can notify the user or update the UI
       },
       error: (err: any) => {
