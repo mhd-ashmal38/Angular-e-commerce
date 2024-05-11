@@ -19,6 +19,9 @@ router.delete('/products/delete/:id',productController.deleteProduct);
 
 router.get('/products/view/:id',productController.getAproduct);
 
+// Update product
+router.put('/edit-product/:id', productController.editProduct);
+
 // // cart
 router.post('/cart/add', cartController.addToCart);
 

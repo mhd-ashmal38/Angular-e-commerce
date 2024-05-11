@@ -7,7 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { AddComponent } from './add/add.component';
 import { ViewComponent } from './view/view.component';
 import { EditComponent } from './edit/edit.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
 
@@ -23,7 +23,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }

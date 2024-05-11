@@ -9,6 +9,7 @@ import { ApiService } from '../service/api.service';
 export class HeaderComponent implements OnInit {
   cartItemCount: number = 0;
   wishlistItemCount: number = 0;
+  isHidden: boolean = true; // Variable to track visibility state of hidden div
 
   constructor(private api: ApiService) { }
 
@@ -30,4 +31,10 @@ export class HeaderComponent implements OnInit {
       this.wishlistItemCount = data.length;
     })
   }
+
+  // Toggle visibility of hidden div
+  toggleHidden(): void {
+    this.isHidden = !this.isHidden;
+  }
+  
 }
