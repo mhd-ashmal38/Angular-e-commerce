@@ -9,6 +9,10 @@ import { ViewComponent } from './view/view.component';
 import { EditComponent } from './edit/edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { AngularToastifyModule, ToastService } from 'angular-toastify';
+import { HighchartsChartModule } from 'highcharts-angular';
+import { PieChartComponent } from './pie-chart/pie-chart.component';
+import { SearchPipe } from './transform/search.pipe';
 
 
 @NgModule({
@@ -18,13 +22,18 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     AddComponent,
     ViewComponent,
     EditComponent,
-    SidebarComponent
+    SidebarComponent,
+    PieChartComponent,
+    SearchPipe
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     FormsModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    AngularToastifyModule,
+    HighchartsChartModule
+  ],
+  providers: [ToastService],
 })
 export class AdminModule { }

@@ -13,7 +13,17 @@ export class HeaderComponent implements OnInit {
 
   constructor(private api: ApiService) { }
 
+  paragraphs: string[] = [
+    "FREE STANDARD SHIPPING WITH ASHCLUB",
+    "SAVE ON FAVS: UP TO 50% OFF",
+    "GET A $100 GIFTCARD FOR $80"
+  ];
+  currentIndex: number = 0;
+
   ngOnInit(): void {
+    setInterval(() => {
+      this.currentIndex = (this.currentIndex + 1) % this.paragraphs.length;
+    }, 3000);
     this.getCartItemsCount();
     this.getWishlistItemCount()
   }

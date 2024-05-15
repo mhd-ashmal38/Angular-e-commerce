@@ -50,6 +50,7 @@ calculateSubtotal(): void {
 
 // Calculate total
 calculateTotal(): number {
+    this.shippingCost = 4.99;
   return this.subtotal + this.shippingCost;
 }
 

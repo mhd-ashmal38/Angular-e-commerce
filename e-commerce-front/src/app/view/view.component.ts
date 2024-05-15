@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../service/api.service';
+import { ToastService } from 'angular-toastify';
 
 @Component({
   selector: 'app-view',
@@ -12,7 +13,7 @@ export class ViewComponent implements OnInit {
   singleproduct: any = {};
   quantity: number = 1;
 
-  constructor(private activated: ActivatedRoute, private api: ApiService) { }
+  constructor(private activated: ActivatedRoute, private api: ApiService, private _toastService: ToastService) { }
 
   ngOnInit(): void {
 
@@ -26,6 +27,14 @@ export class ViewComponent implements OnInit {
     this.singleproduct.mainImage = this.singleproduct.img1;
 
 
+  }
+
+  addSuccessToastCart() {
+    this._toastService.success('Item added to cart');
+  }
+
+  addSuccessToastWishlist() {
+    this._toastService.success('Item added to wishlist');
   }
 
   getProduct = (id: any) => {
@@ -53,8 +62,7 @@ export class ViewComponent implements OnInit {
     this.api.addToCart(product, quantity).subscribe({
       next: (res: any) => {
         // Handle success response
-        console.log('Product added to cart:', res);
-        alert('Added to cart')
+        this.addSuccessToastCart()
       },
       error: (err: any) => {
         // Handle error response
@@ -65,14 +73,12 @@ export class ViewComponent implements OnInit {
 
   // add to wishlist
   addToWishlist(product: any) {
-    const { _id, name, price,stock, img1 } = product; // Assuming _id is the productId
-    const wishlistItem = { productId: _id, name, price,stock, img1 };
+    const { _id, name, price, stock, img1 } = product; // Assuming _id is the productId
+    const wishlistItem = { productId: _id, name, price, stock, img1 };
 
     this.api.addToWishlist(wishlistItem).subscribe({
       next: (res: any) => {
-        console.log('Product added to wishlist:', res);
-        alert('Added to Wishlist')
-        // Optionally, you can notify the user or update the UI
+        this.addSuccessToastWishlist()
       },
       error: (err: any) => {
         console.error('Error adding product to wishlist:', err);

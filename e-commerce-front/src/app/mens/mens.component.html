@@ -1,32 +1,21 @@
 <!-- header -->
 <app-header></app-header>
 
-<!--
-  Heads up! 👋
-
-  This component comes with some `rtl` classes. Please remove them if they are not needed in your project.
-
-  Plugins:
-    - @tailwindcss/forms
--->
-
 <section>
     <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
         <header>
-            <h2 class="text-xl font-bold text-gray-900 sm:text-3xl">Product Collection</h2>
-
+            <h2 class="text-xl font-bold text-gray-900 sm:text-3xl">Mens Collection</h2>
             <p class="mt-4 max-w-md text-gray-500">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque praesentium cumque iure
-                dicta incidunt est ipsam, officia dolor fugit natus?
+                Discover our Mens Collection, curated with precision for the modern gentleman. Find sophistication and style in every piece.
             </p>
         </header>
 
-        <div class="mt-8 flex items-center gap-3">
+        <div class="mt-8 flex justify-end items-center gap-3">
+            <div class="">
+                <label for="SortBy" class="sr-only px-2">SortBy</label>
 
-            <div class="block">
-                <label for="SortBy" class="sr-only">SortBy</label>
-
-                <select id="SortBy" class="h-10 rounded border-gray-300 text-sm" [(ngModel)]="selectedType" (ngModelChange)="filterProductsByType()">
+                <select id="SortBy" class="h-10 border border-black text-sm" [(ngModel)]="selectedType"
+                    (ngModelChange)="filterProductsByType()">
                     <option disabled>Sort By</option>
                     <option value="All">All</option>
                     <option value="Shoes">Shoes</option>
@@ -40,8 +29,7 @@
             <li *ngFor="let product of mens">
                 <a routerLink="/product/view/{{product.id}}" class="group block overflow-hidden">
                     <div class="image-container">
-                        <img [src]="product.img1"
-                            alt=""
+                        <img [src]="product.img1" alt=""
                             class="w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]" />
                     </div>
 

@@ -30,17 +30,15 @@ export class LoginComponent {
       const email=this.loginForm.value.email
       const password=this.loginForm.value.password
 
-      console.log(`${email} ${password}`);
-
       const reqBody={email,password}
 
       this.api.loginApi(reqBody).subscribe({
         next:(res:any)=>{
-          console.log(res);
           this.route.navigateByUrl('/admin')
           
         },
         error:(err:any)=>{
+          alert("Login failed. Please check your email and password.");
           console.log(err);
           
         }
@@ -49,7 +47,7 @@ export class LoginComponent {
       
     }
     else{
-      alert("invalid error")
+      alert("Invalid form data. Please check your inputs.");
     }
   }
 

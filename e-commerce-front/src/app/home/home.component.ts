@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
   newArrivals:any=[]
 
   constructor(private api:ApiService){}
+  
   ngOnInit(): void {
     this.getNewArrivals()
   }

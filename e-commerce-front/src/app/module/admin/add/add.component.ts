@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ToastService } from 'angular-toastify';
 import { ApiService } from 'src/app/service/api.service';
 
 @Component({
@@ -8,22 +9,30 @@ import { ApiService } from 'src/app/service/api.service';
 })
 export class AddComponent {
 
-  constructor(private api:ApiService){}
+  constructor(private api:ApiService, private _toastService: ToastService){}
 
   productData: any = {};
+
+  addSuccessToast() {
+    this._toastService.success('Product added');
+  }
+
+  addErrorToast() {
+    this._toastService.error('Action failed, please try again after some time');
+  }
 
   addProduct=(formData: any)=>{
     this.api.addProduct(formData).subscribe({
       next:(res:any)=>{
-        console.log('Product added',res);
         this.productData=res
         console.log(this.productData);
-        alert('Product added')
+        this.addSuccessToast()
         this.productData = {};
         
       },
       error:(err:any)=>{
         console.log('Failed',err);
+        this.addErrorToast()
         
       }
     })

@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { AllProductsComponent } from './all-products/all-products.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ViewComponent } from './view/view.component';
@@ -17,13 +16,16 @@ import { HomeComponent } from './home/home.component';
 import { MensComponent } from './mens/mens.component';
 import { WomensComponent } from './womens/womens.component';
 import { KidsComponent } from './kids/kids.component';
+import { AngularToastifyModule, ToastService } from 'angular-toastify';
+import { CheckoutShippingComponent } from './checkout-shipping/checkout-shipping.component';
+import { CheckoutBillingComponent } from './checkout-billing/checkout-billing.component';
+import { CheckoutConfirmComponent } from './checkout-confirm/checkout-confirm.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    AllProductsComponent,
     LoginComponent,
     RegisterComponent,
     ViewComponent,
@@ -32,16 +34,20 @@ import { KidsComponent } from './kids/kids.component';
     HomeComponent,
     MensComponent,
     WomensComponent,
-    KidsComponent
+    KidsComponent,
+    CheckoutShippingComponent,
+    CheckoutBillingComponent,
+    CheckoutConfirmComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    AngularToastifyModule
   ],
-  providers: [],
+  providers: [ToastService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

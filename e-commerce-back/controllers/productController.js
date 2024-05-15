@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const products = require('../models/productSchema')
 
 // add product
@@ -58,13 +59,17 @@ exports.getAproduct = async (req, res) => {
 // delete product by id
 exports.deleteProduct = async (req, res) => {
     try {
-        const productId = req.params.id
-        await products.findByIdAndDelete(productId)
-        res.status(200).json({ message: "Product deleted" })
+        const {id} = req.params;
+        const deletedProduct = await products.findByIdAndDelete({_id:id});
+        if (!deletedProduct) {
+            return res.status(404).json({ message: "Product not found" });
+        }
+        res.status(200).json({ message: "Product deleted successfully" });
     } catch (error) {
-        res.status(500).json({ message: error.message })
+        console.error("Error deleting product:", error);
+        res.status(500).json({ message: "Internal Server Error", error: error.message });
     }
-}
+};
 
 // Edit product by ID
 exports.editProduct = async (req, res) => {

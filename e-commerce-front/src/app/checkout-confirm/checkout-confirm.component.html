@@ -1,0 +1,139 @@
+<div class="font-[sans-serif] bg-white p-4">
+    <div class="lg:max-w-7xl max-w-xl mx-auto md:px-20 md:py-10">
+        <div class="lg:col-span-2 max-lg:order-1">
+            <div class="flex items-start">
+                <div class="w-full">
+                    <div class="flex items-center w-full">
+                        <div
+                            class="w-8 h-8 shrink-0 mx-[-1px] bg-[#333] p-1.5 flex items-center justify-center rounded-full">
+                            <span class="text-base text-white font-bold">1</span>
+                        </div>
+                        <div class="w-full h-[3px] mx-4 rounded-lg bg-[#333]"></div>
+                    </div>
+                    <div class="mt-2 mr-4">
+                        <h6 class="text-base font-bold text-[#333]">Shipping</h6>
+                    </div>
+                </div>
+                <div class="w-full">
+                    <div class="flex items-center w-full">
+                        <div
+                            class="w-8 h-8 shrink-0 mx-[-1px] bg-[#333] p-1.5 flex items-center justify-center rounded-full">
+                            <span class="text-base text-white font-bold">2</span>
+                        </div>
+                        <div class="w-full h-[3px] mx-4 rounded-lg bg-[#333]"></div>
+                    </div>
+                    <div class="mt-2 mr-4">
+                        <h6 class="text-base font-bold text-[#333]">Billing</h6>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-center">
+                        <div
+                            class="w-8 h-8 shrink-0 mx-[-1px] bg-[#333] p-1.5 flex items-center justify-center rounded-full">
+                            <span class="text-base text-white font-bold">3</span>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <h6 class="text-base font-bold text-[#333]">Confirm</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="md:flex gap-3 mt-5">
+
+                <div class="w-full max-md:mt-7 md:flex gap-3 h-fit">
+
+                    <div class="bg-gray-100 rounded-md px-4 md:px-10 py-8 w-full">
+                        <h2 class="text-3xl font-semibold pb-3">Deliver to</h2>
+                        <div class="ps-3 space-y-1.5 text-gray-500">
+                            <p>John Doe </p>
+                            <p>17 Eros Building</p>
+                            <p>Garib Nagar, Khambadevi Road, Dharavi</p>
+                            <p>Mumbai, Maharashtra, 400017 </p>
+                            <p>johndoe@gmail.com</p>
+                            <p>+91 99******95</p>
+                            <button
+                                class="min-w-[150px] px-4 mt-2 py-2 text-sm bg-[#333] text-white rounded-md hover:bg-[#111]">Edit
+                                address</button>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-100 rounded-md px-6 py-8 max-md:mt-3 h-fit md:w-4/6">
+                        <h2 class="text-3xl font-semibold mb-3">Get it by</h2>
+
+                        <div class="flex items-center border-2 border-gray-300 p-2 rounded-md mb-2"
+                            [class.selected]="selectedDelivery === 'normal'">
+                            <input type="radio" name="date" class="w-5 h-5 cursor-pointer" value="normal"
+                                (change)="selectedDelivery = 'normal'" checked />
+                            <label for="normalDelivery" class="ml-4 gap-2 cursor-pointer text-lime-500">
+                                Monday 20 May <br>
+                                <span class="text-black text-sm">$4.99 Delivery</span>
+                            </label>
+                        </div>
+
+                        <div class="flex items-center border-2 border-gray-300 p-2 rounded-md mb-2"
+                            [class.selected]="selectedDelivery === 'fast'">
+                            <input type="radio" name="date" class="w-5 h-5 cursor-pointer" value="fast"
+                                (change)="selectedDelivery = 'fast'" />
+                            <label for="fastDelivery" class="ml-4 gap-2 cursor-pointer text-lime-600">
+                                Friday 17 may <br>
+                                <span class="text-black text-sm">$7.99 Delivery</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-100 px-6 py-8 max-md:mt-5 rounded-md md:w-2/5">
+                    <h2 class="text-5xl font-extrabold text-[#333]">${{ getTotalPrice() }}</h2>
+                    <ul class="mt-10 space-y-6">
+                        <li class="text-[#333] mt-10 space-y-6">
+                        <li *ngFor="let cartItem of cartItems" class="flex justify-between gap-2">
+                            <p class="text-sm">{{cartItem.name}}</p>
+                            <p class="font-bold">${{cartItem.price}}</p>
+                        </li>
+                        <li class="flex justify-between gap-2">
+                            <p class="text-sm">Delivery</p>
+                            <p class="font-bold">${{ selectedDelivery === 'normal' ? '4.99' : '7.99' }}</p>
+                        </li>
+                        <li class="flex justify-between gap-2 font-bold border-t-2 pt-4">
+                            <p class="text-sm">Total</p>
+                            <p class="font-bold">${{ getTotalPrice() }}</p>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="flex justify-center flex-wrap gap-4 mt-8">
+                <button routerLink="/checkout-billing" type="button"
+                    class="min-w-[150px] px-6 py-3.5 text-sm bg-gray-100 text-[#333] rounded-md hover:bg-gray-200">Back</button>
+                <button type="button"
+                    class="min-w-[150px] px-6 py-3.5 text-sm bg-[#333] text-white rounded-md hover:bg-[#111]"
+                    (click)="toggleModal()">Confirm Order</button>
+            </div>
+
+            <div *ngIf="showModal"
+                class="fixed inset-0 p-4 flex flex-wrap justify-center items-center w-full h-full z-[1000] before:fixed before:inset-0 before:w-full before:h-full before:bg-[rgba(0,0,0,0.5)] overflow-auto font-[sans-serif]">
+                <div class="w-full max-w-lg bg-white shadow-lg rounded-md p-6 relative">
+                    <div class="my-8 text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-16 shrink-0 fill-[#23af08] inline"
+                            viewBox="0 0 512 512">
+                            <path
+                                d="M383.841 171.838c-7.881-8.31-21.02-8.676-29.343-.775L221.987 296.732l-63.204-64.893c-8.005-8.213-21.13-8.393-29.35-.387-8.213 7.998-8.386 21.137-.388 29.35l77.492 79.561a20.687 20.687 0 0 0 14.869 6.275 20.744 20.744 0 0 0 14.288-5.694l147.373-139.762c8.316-7.888 8.668-21.027.774-29.344z"
+                                data-original="#000000" />
+                            <path
+                                d="M256 0C114.84 0 0 114.84 0 256s114.84 256 256 256 256-114.84 256-256S397.16 0 256 0zm0 470.487c-118.265 0-214.487-96.214-214.487-214.487 0-118.265 96.221-214.487 214.487-214.487 118.272 0 214.487 96.221 214.487 214.487 0 118.272-96.215 214.487-214.487 214.487z"
+                                data-original="#000000" />
+                        </svg>
+                        <h4 class="text-2xl text-[#333] font-semibold mt-6">Order placed successfully!</h4>
+                        <p class="text-sm text-gray-500 mt-4">Confirmation message is sent to your registered mobile
+                            number.</p>
+                    </div>
+                    <button routerLink="" type="button"
+                        class="px-6 py-2.5 min-w-[150px] w-full rounded text-white text-sm font-semibold border-none outline-none bg-[#333] hover:bg-[#222]">Got
+                        it</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

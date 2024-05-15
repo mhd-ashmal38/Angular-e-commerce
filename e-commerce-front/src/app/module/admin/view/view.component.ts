@@ -8,7 +8,10 @@ import { ApiService } from 'src/app/service/api.service';
 })
 export class ViewComponent implements OnInit {
 
-  allProducts:any=[]
+  allProducts:any=[];
+  filteredProducts: any = []; // Store filtered products
+  selectedCategory: string = 'All'; // Default selection is 'All'
+  searchKey:string=""
 
   constructor(private api:ApiService){}
   ngOnInit(): void {
@@ -22,7 +25,7 @@ export class ViewComponent implements OnInit {
         // console.log(res);
         this.allProducts=res
         // console.log(this.allProducts);
-        
+        this.filterProductsByCategory(); // Filter initially by default selection
         
       },
       error:(err:any)=>{
@@ -33,7 +36,7 @@ export class ViewComponent implements OnInit {
   }
 
   // delete product
-  deleteProducts=(id:Number)=>{
+  deleteProducts(id:any){
     this.api.deleteProduct(id).subscribe({
       next:(res:any)=>{
         console.log('deleted',res);
@@ -45,5 +48,13 @@ export class ViewComponent implements OnInit {
       }
     })
   }
+
+  filterProductsByCategory = () => {
+    if (this.selectedCategory === 'All') {
+      this.filteredProducts = this.allProducts; // Show all products
+    } else {
+      this.filteredProducts = this.allProducts.filter((product: any) => product.category === this.selectedCategory);
+    }
+  }  
 
 }

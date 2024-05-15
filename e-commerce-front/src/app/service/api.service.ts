@@ -22,8 +22,8 @@ export class ApiService {
   }
 
   // delete product by id
-  deleteProduct=(id:any)=>{
-    return this.http.delete(`${this.SERVER_URL}/products/delete/${id}`)
+  deleteProduct(id:any){
+    return this.http.delete(`${this.SERVER_URL}/products/delete/${id}`,{})
   }
 
   // api call to get a single product

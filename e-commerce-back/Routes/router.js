@@ -15,7 +15,7 @@ router.post('/products/add', productController.addProduct);
 
 router.get('/products/all',productController.getAllProductcontrollers);
 
-router.delete('/products/delete/:id',productController.deleteProduct);
+router.delete('/products/delete/:id', productController.deleteProduct);
 
 router.get('/products/view/:id',productController.getAproduct);
 
